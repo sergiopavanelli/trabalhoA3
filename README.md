@@ -50,7 +50,7 @@ Foi realizada uma análise minuciosa do código-fonte fornecido, identificando e
 
 **Nota:** As evidências visuais (prints de tela ou trechos de código dos problemas identificados e corrigidos) foram documentadas separadamente para entrega da atividade, mas o código final já reflete essas correções.
 
-### 🧪 Plano de Testes, Testes Funcionais e Unitários, e Cobertura de Código (Exercício 01, itens c, d e e)
+### 🧪 Plano de Testes, Testes Funcionais e Unitários, e Cobertura de Código (Exercício 01, itens c, d, e):
 
 Para garantir a qualidade e a robustez do sistema, foram implementados testes abrangentes utilizando o framework **JUnit 5**. Estes testes são executados automaticamente pelo Maven e sua cobertura de código é monitorada pelo JaCoCo.
 
