@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Conta.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo-banco</a> &gt; <a href="index.source.html" class="el_package">com.banco</a> &gt; <span class="el_source">Conta.java</span></div><h1>Conta.java</h1><pre class="source lang-java linenums">// Conta.java
+package com.banco;
+
+/**
+ *
+ * @author samara
+ */
+public abstract class Conta implements OperacaoBancaria {
+    private int numero;
+    private double saldo; // Mantido como private
+    private Agencia agencia;
+
+<span class="fc" id="L13">    public Conta(int numero, double saldoInicial, Agencia agencia) {</span>
+<span class="fc" id="L14">        this.numero = numero;</span>
+<span class="fc" id="L15">        this.saldo = saldoInicial;</span>
+<span class="fc" id="L16">        this.agencia = agencia;</span>
+<span class="fc" id="L17">    }</span>
+
+    // Construtor auxiliar se quiser iniciar com saldo zero
+    public Conta(int numero, Agencia agencia) {
+<span class="nc" id="L21">        this(numero, 0.0, agencia);</span>
+<span class="nc" id="L22">    }</span>
+
+    // Getter para numero
+    public int getNumero() {
+<span class="fc" id="L26">        return numero;</span>
+    }
+
+    // Setter para numero (se necessário)
+    public void setNumero(int numero) {
+<span class="nc" id="L31">        this.numero = numero;</span>
+<span class="nc" id="L32">    }</span>
+
+    // Getter para saldo
+    public double getSaldo() {
+<span class="fc" id="L36">        return saldo;</span>
+    }
+
+    // Setter para saldo (use com cautela, prefira depositar/sacar)
+    public void setSaldo(double saldo) {
+<span class="nc" id="L41">        this.saldo = saldo;</span>
+<span class="nc" id="L42">    }</span>
+
+    // Getter para agencia
+    public Agencia getAgencia() {
+<span class="fc" id="L46">        return agencia;</span>
+    }
+
+    // Setter para agencia (se necessário)
+    public void setAgencia(Agencia agencia) {
+<span class="nc" id="L51">        this.agencia = agencia;</span>
+<span class="nc" id="L52">    }</span>
+
+    // Métodos da interface OperacaoBancaria (implementação básica, pode ser sobrescrita nas subclasses)
+    @Override
+    public void depositar(double valor) {
+<span class="pc bpc" id="L57" title="1 of 2 branches missed.">        if (valor &gt; 0) {</span>
+<span class="nc" id="L58">            this.saldo += valor;</span>
+            // Opcional: System.out.println(&quot;Depósito de &quot; + valor + &quot; realizado. Saldo atual: &quot; + this.saldo);
+<span class="nc" id="L60">        } else {</span>
+            // AJUSTE AQUI: Mude a mensagem para corresponder EXATAMENTE ao que o teste CTF04 espera.
+<span class="fc" id="L62">            System.out.println(&quot;Valor inválido para depósito.&quot;);</span>
+        }
+<span class="fc" id="L64">    }</span>
+
+    @Override
+    public boolean sacar(double valor) { // Tipo de retorno alterado para boolean
+<span class="nc bnc" id="L68" title="All 4 branches missed.">        if (valor &gt; 0 &amp;&amp; this.saldo &gt;= valor) {</span>
+<span class="nc" id="L69">            this.saldo -= valor;</span>
+            // Opcional: System.out.println(&quot;Saque de &quot; + valor + &quot; realizado. Saldo atual: &quot; + this.saldo);
+<span class="nc" id="L71">            return true;</span>
+        } else {
+            // Se o saque for negativo/zero, você pode querer uma mensagem específica.
+            // Para o CTF03, a ContaCorrente já sobrescreve e lida com isso.
+<span class="nc bnc" id="L75" title="All 2 branches missed.">            if (valor &lt;= 0) {</span>
+<span class="nc" id="L76">                System.out.println(&quot;Valor de saque inválido. O valor deve ser positivo.&quot;);</span>
+<span class="nc" id="L77">            } else {</span>
+<span class="nc" id="L78">                System.out.println(&quot;Saldo insuficiente ou valor de saque inválido.&quot;); // Esta é a mensagem padrão da Conta, CC sobrescreve.</span>
+            }
+<span class="nc" id="L80">            return false;</span>
+        }
+    }
+    
+    // Método imprimir precisa ser abstrato ou ter uma implementação padrão
+    @Override
+    public abstract void imprimir(); // Já que ContaCorrente o implementa, Conta deve ter um abstract
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

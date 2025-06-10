@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Aula.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo-banco</a> &gt; <a href="index.source.html" class="el_package">com.banco</a> &gt; <span class="el_source">Aula.java</span></div><h1>Aula.java</h1><pre class="source lang-java linenums">package com.banco;
+
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+import java.util.Random;
+
+<span class="nc" id="L8">public class Aula {</span>
+    public static void main(String[] args) {
+<span class="fc" id="L10">        Scanner entrada = new Scanner(System.in);</span>
+<span class="fc" id="L11">        Random random = new Random();</span>
+
+        String nome;
+        long cnpjLong, cpfLong;
+        int numAgencia;
+<span class="fc" id="L16">        PessoaJuridica p1 = null;</span>
+<span class="fc" id="L17">        PessoaFisica p2 = null;</span>
+<span class="fc" id="L18">        ArrayList&lt;Conta&gt; listaContasGeral = new ArrayList&lt;&gt;();</span>
+
+<span class="fc" id="L20">        Agencia ag1 = new Agencia(1);</span>
+<span class="fc" id="L21">        Agencia ag2 = new Agencia(2);</span>
+<span class="fc" id="L22">        Agencia ag3 = new Agencia(3);</span>
+<span class="fc" id="L23">        Agencia escolhaAgencia = null;</span>
+
+        // Seleção da agência
+<span class="fc" id="L26">        while (true) {</span>
+<span class="fc" id="L27">            System.err.println(&quot;DEBUG: Tentando ler a AGÊNCIA...&quot;); // DEBUG</span>
+<span class="fc" id="L28">            numAgencia = readInt(entrada, &quot;Informe qual a agência você deseja criar conta. Agências disponíveis: 1, 2 e 3&quot;);</span>
+
+<span class="pc bpc" id="L30" title="1 of 4 branches missed.">            if (numAgencia &gt;= 1 &amp;&amp; numAgencia &lt;= 3) {</span>
+<span class="pc bpc" id="L31" title="2 of 4 branches missed.">                switch (numAgencia) {</span>
+                    case 1:
+<span class="fc" id="L33">                        escolhaAgencia = ag1;</span>
+<span class="fc" id="L34">                        break;</span>
+                    case 2:
+<span class="fc" id="L36">                        escolhaAgencia = ag2;</span>
+<span class="fc" id="L37">                        break;</span>
+                    case 3:
+<span class="nc" id="L39">                        escolhaAgencia = ag3;</span>
+                        break;
+                }
+<span class="nc" id="L42">                break;</span>
+            } else {
+<span class="fc" id="L44">                System.out.println(&quot;Agência inválida. Por favor, digite 1, 2 ou 3.&quot;);</span>
+            }
+        }
+
+<span class="fc" id="L48">        System.out.println(&quot;Informe o nome da Pessoa:&quot;);</span>
+<span class="fc" id="L49">        System.err.println(&quot;DEBUG: Tentando ler o NOME...&quot;); // DEBUG</span>
+<span class="fc" id="L50">        nome = entrada.nextLine();</span>
+
+        // Escolha do tipo de pessoa
+<span class="nc" id="L53">        while (true) {</span>
+<span class="fc" id="L54">            System.err.println(&quot;DEBUG: Tentando ler OPÇÃO TIPO DE PESSOA...&quot;); // DEBUG</span>
+<span class="fc" id="L55">            int opcao = readInt(entrada, &quot;Deseja criar a conta para pessoa jurídica ou física? \nDigite \n1: Jurídica \n2: Física&quot;);</span>
+
+<span class="pc bpc" id="L57" title="1 of 4 branches missed.">            if (opcao == 1 || opcao == 2) {</span>
+<span class="fc" id="L58">                ArrayList&lt;Conta&gt; contasDaPessoa = new ArrayList&lt;&gt;();</span>
+
+<span class="fc bfc" id="L60" title="All 2 branches covered.">                if (opcao == 1) {</span>
+<span class="fc" id="L61">                    System.err.println(&quot;DEBUG: Tentando ler CNPJ...&quot;); // DEBUG</span>
+<span class="fc" id="L62">                    cnpjLong = readLong(entrada, &quot;Informe o CNPJ:&quot;);</span>
+<span class="fc" id="L63">                    p1 = new PessoaJuridica(nome, contasDaPessoa, (int) cnpjLong); // Casting to int might truncate, consider using long for CNPJ</span>
+
+<span class="fc" id="L65">                    criarContas(entrada, random, escolhaAgencia, p1, listaContasGeral);</span>
+
+<span class="fc" id="L67">                } else { // Pessoa Física</span>
+<span class="fc" id="L68">                    System.err.println(&quot;DEBUG: Tentando ler CPF...&quot;); // DEBUG</span>
+<span class="fc" id="L69">                    cpfLong = readLong(entrada, &quot;Informe o CPF:&quot;);</span>
+<span class="fc" id="L70">                    p2 = new PessoaFisica(nome, contasDaPessoa, (int) cpfLong); // Casting to int might truncate, consider using long for CPF</span>
+
+<span class="fc" id="L72">                    criarContas(entrada, random, escolhaAgencia, p2, listaContasGeral);</span>
+                }
+<span class="fc" id="L74">                break;</span>
+            } else {
+<span class="nc" id="L76">                System.out.println(&quot;Opção inválida. Por favor, digite 1 ou 2.&quot;);</span>
+            }
+        }
+
+        // entrada.close(); // NÃO FECHAR PARA TESTES JUNIT
+<span class="fc" id="L81">    }</span>
+
+    // Método para criar contas corrente e poupança para PessoaJuridica ou PessoaFisica
+private static void criarContas(Scanner entrada, Random random, Agencia agencia, Pessoa pessoa,
+                                 ArrayList&lt;Conta&gt; listaContasGeral) {
+    ContaCorrente c1;
+    ContaPoupanca c2;
+    double salario, rendimento;
+
+<span class="fc" id="L90">    System.err.println(&quot;DEBUG: Tentando ler OPÇÃO CRIAR CONTA CORRENTE...&quot;); // DEBUG</span>
+<span class="fc" id="L91">    int tipoConta = readInt(entrada, &quot;Deseja criar conta corrente? Digite 1 - sim e 2 - não&quot;);</span>
+
+<span class="fc bfc" id="L93" title="All 2 branches covered.">    if (tipoConta == 1) { // Este é o bloco ORIGINAL para criar Conta Corrente</span>
+<span class="fc" id="L94">        System.err.println(&quot;DEBUG: Tentando ler SALÁRIO...&quot;); // DEBUG</span>
+<span class="fc" id="L95">        salario = readDouble(entrada, &quot;Informe o salário:&quot;);</span>
+
+<span class="fc" id="L97">        c1 = new ContaCorrente(random.nextInt(1_000_000), salario, agencia);</span>
+<span class="fc" id="L98">        pessoa.addConta(c1);</span>
+<span class="fc" id="L99">        listaContasGeral.add(c1);</span>
+<span class="fc" id="L100">        System.out.println(&quot;O número da sua conta corrente é: &quot; + c1.getNumero());</span>
+<span class="fc" id="L101">        System.out.println(&quot;O número da sua agência é: &quot; + c1.getAgencia().getNumero());</span>
+<span class="fc" id="L102">        c1.imprimir();</span>
+    } // FIM DO BLOCO IF DA CONTA CORRENTE ORIGINAL
+
+    // A próxima leitura é para a conta poupança, e ela deve vir APÓS o bloco da conta corrente.
+<span class="fc" id="L106">    System.err.println(&quot;DEBUG: Tentando ler OPÇÃO CRIAR CONTA POUPANÇA...&quot;); // DEBUG</span>
+<span class="fc" id="L107">    int tipoConta2 = readInt(entrada, &quot;Deseja criar conta poupança? Digite 1 - sim e 2 - não&quot;);</span>
+
+<span class="fc bfc" id="L109" title="All 2 branches covered.">    if (tipoConta2 == 1) {</span>
+<span class="fc" id="L110">        System.err.println(&quot;DEBUG: Tentando ler RENDIMENTO...&quot;); // DEBUG</span>
+<span class="fc" id="L111">        rendimento = readDouble(entrada, &quot;Informe o rendimento (ex: 0.005 para 0.5%):&quot;);</span>
+
+<span class="fc" id="L113">        c2 = new ContaPoupanca(random.nextInt(1_000_000), 0.0, agencia);</span>
+<span class="fc" id="L114">        c2.setRendimento(rendimento);</span>
+<span class="fc" id="L115">        pessoa.addConta(c2);</span>
+<span class="fc" id="L116">        listaContasGeral.add(c2);</span>
+<span class="fc" id="L117">        System.out.println(&quot;O número da sua conta poupança é: &quot; + c2.getNumero());</span>
+<span class="fc" id="L118">        System.out.println(&quot;O número da sua agência é: &quot; + c2.getAgencia().getNumero());</span>
+<span class="fc" id="L119">        c2.imprimir();</span>
+    }
+<span class="fc" id="L121">}</span>
+
+    // --- Helper methods for robust input reading ---
+    private static int readInt(Scanner sc, String message) {
+<span class="nc" id="L125">        while (true) {</span>
+<span class="fc" id="L126">            System.out.println(message);</span>
+            try {
+<span class="fc" id="L128">                int value = sc.nextInt();</span>
+<span class="fc" id="L129">                sc.nextLine(); // Consume the rest of the line</span>
+<span class="fc" id="L130">                System.err.println(&quot;DEBUG: LIDO INT: &quot; + value); // DEBUG</span>
+<span class="fc" id="L131">                return value;</span>
+<span class="nc" id="L132">            } catch (InputMismatchException e) {</span>
+<span class="nc" id="L133">                System.out.println(&quot;Entrada inválida. Por favor, digite um número inteiro.&quot;);</span>
+<span class="nc" id="L134">                sc.nextLine(); // Discard the incorrect input</span>
+            }
+        }
+    }
+
+    private static long readLong(Scanner sc, String message) {
+<span class="nc" id="L140">        while (true) {</span>
+<span class="fc" id="L141">            System.out.println(message);</span>
+            try {
+<span class="fc" id="L143">                long value = sc.nextLong();</span>
+<span class="fc" id="L144">                sc.nextLine(); // Consume the rest of the line</span>
+<span class="fc" id="L145">                System.err.println(&quot;DEBUG: LIDO LONG: &quot; + value); // DEBUG</span>
+<span class="fc" id="L146">                return value;</span>
+<span class="nc" id="L147">            } catch (InputMismatchException e) {</span>
+<span class="nc" id="L148">                System.out.println(&quot;Entrada inválida. Por favor, digite um número longo.&quot;);</span>
+<span class="nc" id="L149">                sc.nextLine(); // Discard the incorrect input</span>
+            }
+        }
+    }
+
+    private static double readDouble(Scanner sc, String message) {
+<span class="nc" id="L155">        while (true) {</span>
+<span class="fc" id="L156">            System.out.println(message);</span>
+            try {
+<span class="fc" id="L158">                double value = sc.nextDouble();</span>
+<span class="fc" id="L159">                sc.nextLine(); // Consume the rest of the line</span>
+<span class="fc" id="L160">                System.err.println(&quot;DEBUG: LIDO DOUBLE: &quot; + value); // DEBUG</span>
+<span class="fc" id="L161">                return value;</span>
+<span class="nc" id="L162">            } catch (InputMismatchException e) {</span>
+<span class="nc" id="L163">                System.out.println(&quot;Entrada inválida. Por favor, digite um número decimal.&quot;);</span>
+<span class="nc" id="L164">                sc.nextLine(); // Discard the incorrect input</span>
+            }
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

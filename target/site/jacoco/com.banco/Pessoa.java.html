@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Pessoa.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo-banco</a> &gt; <a href="index.source.html" class="el_package">com.banco</a> &gt; <span class="el_source">Pessoa.java</span></div><h1>Pessoa.java</h1><pre class="source lang-java linenums">// Pessoa.java
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.banco;
+import java.util.ArrayList;
+
+/**
+ *
+ * @author samara
+ */
+public abstract class Pessoa {
+    private String nome;
+    private ArrayList&lt;Conta&gt; listaContas; // Renomeado para seguir convenção de nomes (camelCase)
+
+    // Construtor corrigido para inicializar 'nome' e 'listaContas'
+<span class="fc" id="L19">    public Pessoa(String nome, ArrayList&lt;Conta&gt; listaContas) {</span>
+<span class="fc" id="L20">        this.nome = nome;</span>
+<span class="fc" id="L21">        this.listaContas = listaContas; // Assume que a lista já vem inicializada</span>
+<span class="fc" id="L22">    }</span>
+
+    // Getter para o atributo 'nome'
+    public String getNome() {
+<span class="nc" id="L26">        return nome;</span>
+    }
+
+    // Setter para o atributo 'nome'
+    public void setNome(String nome) {
+<span class="nc" id="L31">        this.nome = nome;</span>
+<span class="nc" id="L32">    }</span>
+
+    // Getter para o atributo 'listaContas'
+    public ArrayList&lt;Conta&gt; getListaContas() {
+<span class="nc" id="L36">        return this.listaContas;</span>
+    }
+
+    // Setter para o atributo 'listaContas' (para substituir a lista inteira, se necessário)
+    // Este setter precisa receber uma ArrayList de Conta, não uma única ContaPoupanca
+    public void setListaContas(ArrayList&lt;Conta&gt; listaContas) {
+<span class="nc" id="L42">        this.listaContas = listaContas;</span>
+<span class="nc" id="L43">    }</span>
+
+    // Método para adicionar uma única conta à lista
+    public void addConta(Conta conta) {
+<span class="pc bpc" id="L47" title="1 of 2 branches missed.">        if (this.listaContas == null) { // Garante que a lista esteja inicializada</span>
+<span class="nc" id="L48">            this.listaContas = new ArrayList&lt;&gt;();</span>
+        }
+<span class="fc" id="L50">        this.listaContas.add(conta);</span>
+<span class="fc" id="L51">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

@@ -1,0 +1,10 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+demo-banco,com.banco,Aula,34,274,4,14,17,77,5,11,1,5
+demo-banco,com.banco,PessoaJuridica,7,8,0,0,3,3,2,1,2,1
+demo-banco,com.banco,PessoaFisica,7,8,0,0,3,3,2,1,2,1
+demo-banco,com.banco,Agencia,4,9,0,0,2,4,1,2,1,2
+demo-banco,com.banco,ContaPoupanca,9,38,0,0,3,11,2,3,2,3
+demo-banco,com.banco,App,7,0,0,0,3,0,2,0,2,0
+demo-banco,com.banco,ContaCorrente,27,65,3,3,8,16,5,4,2,4
+demo-banco,com.banco,Conta,55,29,7,1,18,11,9,5,5,5
+demo-banco,com.banco,Pessoa,19,18,1,1,7,7,5,2,4,2

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ContaPoupanca.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo-banco</a> &gt; <a href="index.source.html" class="el_package">com.banco</a> &gt; <span class="el_source">ContaPoupanca.java</span></div><h1>ContaPoupanca.java</h1><pre class="source lang-java linenums">// ContaPoupanca.java
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.banco;
+
+/**
+ *
+ * @author samara
+ */
+public class ContaPoupanca extends Conta{
+    private double rendimento;
+
+    public ContaPoupanca(int numero, double saldoInicial, Agencia agencia){ // Adicionado saldoInicial
+<span class="fc" id="L17">        super(numero, saldoInicial, agencia); // Chamando o construtor de Conta com saldo inicial</span>
+        // O rendimento em si não é o saldo inicial, mas um fator de cálculo futuro.
+        // Se a intenção era que o rendimento fosse o saldo inicial, o design pode precisar ser repensado.
+        // Mantendo 'rendimento' como um atributo separado para representar a taxa ou fator de rendimento.
+<span class="fc" id="L21">    }</span>
+
+    public ContaPoupanca(int numero, Agencia agencia) { // Construtor auxiliar sem rendimento inicial, chama o outro com 0.0 de saldo
+<span class="nc" id="L24">        super(numero, 0.0, agencia);</span>
+<span class="nc" id="L25">    }</span>
+    
+    @Override
+    public void imprimir() {
+<span class="fc" id="L29">        System.out.println(&quot;--- Dados da Conta Poupança ---&quot;);</span>
+<span class="fc" id="L30">        System.out.println(&quot;Número da Conta: &quot; + getNumero());</span>
+<span class="fc" id="L31">        System.out.println(&quot;Agência: &quot; + getAgencia().getNumero());</span>
+<span class="fc" id="L32">        System.out.println(&quot;Saldo: &quot; + getSaldo());</span>
+<span class="fc" id="L33">        System.out.println(&quot;Rendimento (taxa/fator): &quot; + this.rendimento);</span>
+<span class="fc" id="L34">        System.out.println(&quot;--------------------------------&quot;);</span>
+<span class="fc" id="L35">    }</span>
+
+    // Getter for rendimento
+    public double getRendimento(){
+<span class="nc" id="L39">        return this.rendimento;</span>
+    }
+
+    // Setter for rendimento
+    public void setRendimento(double rendimento){
+<span class="fc" id="L44">        this.rendimento = rendimento;</span>
+<span class="fc" id="L45">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

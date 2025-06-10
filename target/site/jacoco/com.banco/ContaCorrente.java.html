@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ContaCorrente.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo-banco</a> &gt; <a href="index.source.html" class="el_package">com.banco</a> &gt; <span class="el_source">ContaCorrente.java</span></div><h1>ContaCorrente.java</h1><pre class="source lang-java linenums">// ContaCorrente.java
+package com.banco;
+
+public class ContaCorrente extends Conta {
+    private double limiteChequeEspecial;
+
+    // Construtor principal
+    public ContaCorrente(int numero, double saldoInicial, Agencia agencia, double limiteChequeEspecial) {
+<span class="fc" id="L9">        super(numero, saldoInicial, agencia);</span>
+<span class="fc" id="L10">        this.limiteChequeEspecial = limiteChequeEspecial;</span>
+<span class="fc" id="L11">    }</span>
+
+    // Construtor auxiliar sem limite de cheque especial (usa 0.0 como padrão)
+    public ContaCorrente(int numero, double saldoInicial, Agencia agencia) {
+<span class="fc" id="L15">        this(numero, saldoInicial, agencia, 0.0); // Chama o construtor principal</span>
+<span class="fc" id="L16">    }</span>
+
+    // Getter para o atributo 'limiteChequeEspecial'
+    public double getLimiteChequeEspecial() {
+<span class="nc" id="L20">        return limiteChequeEspecial;</span>
+    }
+
+    // Setter para o atributo 'limiteChequeEspecial'
+    public void setLimiteChequeEspecial(double limiteChequeEspecial) {
+<span class="nc" id="L25">        this.limiteChequeEspecial = limiteChequeEspecial;</span>
+<span class="nc" id="L26">    }</span>
+
+    // Sobrescrita do método sacar para incluir o limite do cheque especial
+    @Override
+    public boolean sacar(double valor) {
+        // Verifica se o valor é positivo e se o saldo disponível (saldo + limite) é suficiente
+<span class="pc bpc" id="L32" title="2 of 4 branches missed.">        if (valor &gt; 0 &amp;&amp; (getSaldo() + this.limiteChequeEspecial) &gt;= valor) {</span>
+<span class="nc" id="L33">            setSaldo(getSaldo() - valor); // Atualiza o saldo usando o setter da classe pai</span>
+<span class="nc" id="L34">            System.out.println(&quot;Saque de &quot; + valor + &quot; realizado na Conta Corrente &quot; + getNumero() + &quot;. Saldo atual: &quot; + getSaldo());</span>
+<span class="nc" id="L35">            return true;</span>
+        } else {
+            // AJUSTE AQUI: Mude a mensagem para corresponder EXATAMENTE ao que o teste CTF03 espera.
+<span class="pc bpc" id="L38" title="1 of 2 branches missed.">            if (valor &lt;= 0) { // Adiciona uma condição para mensagem de valor inválido</span>
+<span class="nc" id="L39">                System.out.println(&quot;Valor de saque inválido. O valor deve ser positivo.&quot;);</span>
+<span class="nc" id="L40">            } else { // Saldo insuficiente</span>
+<span class="fc" id="L41">                System.out.println(&quot;Saldo insuficiente para o valor do saque solicitado&quot;);</span>
+            }
+<span class="fc" id="L43">            return false;</span>
+        }
+    }
+
+    @Override
+    public void imprimir() {
+<span class="fc" id="L49">        System.out.println(&quot;--- Dados da Conta Corrente ---&quot;);</span>
+<span class="fc" id="L50">        System.out.println(&quot;Número da Conta: &quot; + getNumero());</span>
+<span class="fc" id="L51">        System.out.println(&quot;Agência: &quot; + getAgencia().getNumero());</span>
+<span class="fc" id="L52">        System.out.println(&quot;Saldo: &quot; + getSaldo());</span>
+<span class="fc" id="L53">        System.out.println(&quot;Limite de Cheque Especial: &quot; + this.limiteChequeEspecial);</span>
+<span class="fc" id="L54">        System.out.println(&quot;--------------------------------&quot;);</span>
+<span class="fc" id="L55">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
