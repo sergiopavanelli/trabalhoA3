@@ -102,13 +102,9 @@ Esses resultados indicam que a maioria das instruções e ramificações do cód
 
 **Relatório de Cobertura JaCoCo:**
 
-
 ![Relatório de Cobertura JaCoCo](images/demo-banco.png)
 
 ![Relatório de Cobertura JaCoCo](images/demo-banco_2.png)
-
-
-
 
 -   O relatório detalhado pode ser gerado via Maven em `target/site/jacoco/index.html`.
 
@@ -121,6 +117,14 @@ Foram realizadas **5 melhorias de código** que se enquadram em técnicas de ref
 3.  **Remoção de Código Morto:** Partes do código que não eram mais utilizadas ou acessíveis foram removidas, reduzindo a complexidade desnecessária.
 4.  **Uso de Operador Ternário:** Condicionais simples foram substituídas pelo operador ternário (`? :`), tornando o código mais conciso em certos contextos.
 5.  **Eliminação de Duplicações:** Trechos de código duplicados foram identificados e consolidados em uma única implementação, evitando redundância e facilitando futuras manutenções.
+
+---
+
+## 🎥 Demonstração do Projeto Rodando os Testes
+
+Assista a uma demonstração do projeto rodando os testes e mostrando a execução no console:
+
+[**Vídeo de Demonstração - Rodando os Testes**](https://www.youtube.com/watch?v=fwU9mrCvt2E)
 
 ---
 
@@ -143,6 +147,4 @@ Em resumo, o Maven atua como a espinha dorsal do projeto, orquestrando as etapas
 ### 1. Clone o Repositório
 
 ```bash
-
-
 git clone https://github.com/sergiopavanelli/trabalhoA3
