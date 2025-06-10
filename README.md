@@ -1,7 +1,7 @@
 # 🏦 Sistema de Gestão de Contas Bancárias
 
 Este repositório contém a implementação de um sistema simples de **gestão de contas bancárias em Java**.
-O projeto foi desenvolvido como atividade final de uma disciplina e demonstra conceitos de:
+O projeto foi desenvolvido como atividade final da Disciplina Gestão e Qualidade de Software e demonstra conceitos de:
 
 - Programação Orientada a Objetos (POO)
 - Herança, polimorfismo e encapsulamento
@@ -99,7 +99,8 @@ Foram elaborados **6 casos de teste funcionais** para validar o comportamento do
 
 ### 🧷 Testes Unitários (JUnit) e Cobertura de Código (JaCoCo)
 
--   Classe de teste: `ContaTest.java`, com **7 casos de teste** unitários.
+-   Classe de teste principal: `CadastroTest.java`, com **6 casos de teste** funcionais simulados.
+    *(Nota: Embora `AppTest.java` possa existir, `CadastroTest.java` é o foco dos testes funcionais).*
 -   Framework utilizado: **JUnit 5**
 -   Ferramenta de cobertura: **JaCoCo**
 -   Relatório gerado via Maven em `target/site/jacoco/index.html`
@@ -119,7 +120,22 @@ Foram realizadas **5 melhorias** principais:
 
 Este projeto é configurado com Maven. Certifique-se de ter o Maven instalado em sua máquina.
 
+### ⚙️ Por que Maven?
+
+A escolha do **Maven** como ferramenta de automação de build e gerenciamento de projetos para este sistema de gestão bancária foi estratégica e se baseia em diversos benefícios fundamentais para o desenvolvimento de software Java:
+
+* **Padronização de Projetos:** O Maven impõe uma estrutura de diretórios padrão (`src/main/java`, `src/test/java`, `target`, etc.), o que torna o projeto fácil de entender e trabalhar para qualquer desenvolvedor Java, independentemente da equipe ou empresa.
+* **Gerenciamento de Dependências:** Em projetos Java, é comum usar bibliotecas externas (como JUnit para testes). O Maven simplifica a inclusão e o gerenciamento dessas dependências automaticamente. Ele baixa as JARs necessárias do repositório central Maven e as disponibiliza para o projeto e seus plugins, eliminando a necessidade de gerenciar arquivos JAR manualmente.
+* **Automação de Build:** O Maven define um ciclo de vida de build padrão (clean, compile, test, package, install, deploy). Isso permite automatizar tarefas como a compilação do código, a execução dos testes (com JUnit e Surefire) e a geração de relatórios (como o de cobertura de código do JaCoCo) com comandos simples, garantindo consistência e reprodutibilidade do build.
+* **Plugins:** O Maven é extensível através de plugins. Para este projeto, utilizamos plugins como:
+    * **`maven-compiler-plugin`**: Para compilar o código-fonte Java.
+    * **`maven-surefire-plugin`**: Essencial para executar os testes unitários (JUnit) e gerar relatórios de resultados de testes.
+    * **`jacoco-maven-plugin`**: Para instrumentar o código, coletar dados de execução dos testes e gerar o relatório de cobertura de código, fornecendo uma métrica crucial sobre a qualidade dos testes.
+* **Documentação e Relatórios:** Facilita a geração de documentação e relatórios importantes do projeto (como o relatório JaCoCo de cobertura), que são úteis para análise de qualidade e auditoria.
+
+Em resumo, o Maven atua como a espinha dorsal do projeto, orquestrando as etapas de desenvolvimento de forma organizada, eficiente e padronizada, o que é fundamental para a manutenção e evolução de qualquer software.
+
 ### 1. Clone o Repositório
 
 ```bash
-git clone https://github.com/sergiopavanelli/trabalhoA3.git
+git clone [https://github.com/sergiopavanelli/trabalhoA3.git](https://github.com/sergiopavanelli/trabalhoA3.git)
