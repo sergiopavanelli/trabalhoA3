@@ -1,20 +1,14 @@
-package com.banco;
+package com.banco; // ou o package correto
 
-import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.Test; // ou org.junit.Test para JUnit 4
+import static org.junit.jupiter.api.Assertions.assertTrue; // Importa o método estático assertTrue
 
-import org.junit.Test;
-
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-{
+public class AppTest {
     /**
      * Rigorous Test :-)
      */
     @Test
-    public void shouldAnswerWithTrue()
-    {
-        assertTrue( true );
+    public void shouldAnswerWithTrue() {
+        assertTrue(true); // Chamada correta do método assertTrue do JUnit
     }
 }

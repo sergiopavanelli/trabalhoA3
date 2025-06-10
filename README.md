@@ -6,7 +6,6 @@ O projeto foi desenvolvido como atividade final de uma disciplina e demonstra co
 - Programação Orientada a Objetos (POO)
 - Herança, polimorfismo e encapsulamento
 - Testes de software com JUnit
-- Cobertura de código com JaCoCo
 
 ---
 
