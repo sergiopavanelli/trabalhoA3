@@ -42,68 +42,66 @@ O sistema simula um ambiente bancário básico onde o usuário pode **cadastrar 
     -   Retornos de métodos
     -   Assinatura da interface `OperacaoBancaria`
 
-### 🧪 Plano de Testes Funcionais
+### 🧪 Testes de Software: JUnit e Cobertura de Código (JaCoCo)
 
-Foram elaborados **6 casos de teste funcionais** para validar o comportamento do sistema através da interface de console. O objetivo é simular interações do usuário e verificar se as operações são executadas conforme o esperado.
+Para garantir a qualidade e a robustez do sistema, foram implementados testes abrangentes utilizando o framework **JUnit 5**. Estes testes, focados na validação das funcionalidades principais, são executados automaticamente pelo Maven e sua cobertura de código é monitorada pelo JaCoCo.
 
-1.  **Cenário:** Cadastro de Pessoa Física e Criação de Conta Corrente
+**1. Testes Funcionais Detalhados (Implementados na classe `CadastroTest.java` com JUnit 5)**
+
+A classe `CadastroTest.java` contém uma suíte de **6 casos de teste funcionais (CTFs)** que simulam a interação do usuário com a aplicação via entrada/saída de console. O objetivo é validar o comportamento do sistema de ponta a ponta em cenários chave.
+
+* **CTF01: Cadastrar Pessoa Física e Conta Corrente com Depósito Inicial**
+    * **Cenário:** Verificação do fluxo completo de cadastro de uma Pessoa Física, criação de uma Conta Corrente associada e confirmação de um depósito inicial.
     * **Passos:**
-        1.  Acessar o menu de cadastro de clientes.
-        2.  Selecionar a opção para Pessoa Física.
-        3.  Informar dados válidos (nome, CPF, etc.).
-        4.  Acessar o menu de criação de contas.
-        5.  Selecionar a opção para Conta Corrente.
-        6.  Vincular ao cliente recém-cadastrado e a uma agência.
-    * **Resultado Esperado:** Mensagem de sucesso no cadastro do cliente e na criação da conta. A conta deve ser listada corretamente.
+        1.  Simula a entrada de dados para cadastro de Pessoa Física.
+        2.  Simula a entrada de dados para criação de Conta Corrente com depósito.
+        3.  Executa o método principal da aplicação (`Aula.main`).
+    * **Resultados Esperados:** Confirmação da agência, nome, CPF, perguntas sobre contas e salário, e o saldo inicial de 1000.0.
 
-2.  **Cenário:** Cadastro de Pessoa Jurídica e Criação de Conta Poupança
+* **CTF02: Cadastrar Pessoa Jurídica e Conta Poupança**
+    * **Cenário:** Validação do processo de cadastro de Pessoa Jurídica e criação de uma Conta Poupança com rendimento configurado.
     * **Passos:**
-        1.  Acessar o menu de cadastro de clientes.
-        2.  Selecionar a opção para Pessoa Jurídica.
-        3.  Informar dados válidos (razão social, CNPJ, etc.).
-        4.  Acessar o menu de criação de contas.
-        5.  Selecionar a opção para Conta Poupança.
-        6.  Vincular ao cliente recém-cadastrado e a uma agência.
-    * **Resultado Esperado:** Mensagem de sucesso no cadastro do cliente e na criação da conta. A conta deve ser listada corretamente.
+        1.  Simula a entrada de dados para cadastro de Pessoa Jurídica.
+        2.  Simula a entrada de dados para criação de Conta Poupança com rendimento.
+        3.  Executa o método principal da aplicação (`Aula.main`).
+    * **Resultados Esperados:** Confirmação da agência, nome, CNPJ, perguntas sobre contas e rendimento da poupança, e o saldo inicial de 0.0 na poupança.
 
-3.  **Cenário:** Realização de Depósito em Conta Corrente
+* **CTF03: Tentar Sacar Valor Maior que o Saldo Disponível (Conta Corrente)**
+    * **Cenário:** Verifica se o sistema impede saques que excedem o saldo disponível na Conta Corrente.
     * **Passos:**
-        1.  Criar uma Conta Corrente (se ainda não existir).
-        2.  Acessar o menu de operações bancárias.
-        3.  Selecionar a opção de depósito.
-        4.  Informar o número da conta e um valor positivo para depósito.
-    * **Resultado Esperado:** Mensagem de sucesso no depósito e o saldo da conta deve ser atualizado corretamente.
+        1.  Instancia uma `ContaCorrente` com saldo limitado.
+        2.  Tenta realizar um saque com valor superior ao saldo.
+    * **Resultados Esperados:** O saque não deve ser realizado, o saldo da conta deve permanecer inalterado e uma mensagem de saldo insuficiente deve ser exibida.
 
-4.  **Cenário:** Realização de Saque em Conta Poupança (saldo suficiente)
+* **CTF04: Tentar Depositar Valor Negativo (Conta Corrente)**
+    * **Cenário:** Garante que o sistema rejeita tentativas de depósito com valores negativos.
     * **Passos:**
-        1.  Criar uma Conta Poupança (se ainda não existir) e depositar um valor inicial.
-        2.  Acessar o menu de operações bancárias.
-        3.  Selecionar a opção de saque.
-        4.  Informar o número da conta e um valor para saque menor ou igual ao saldo disponível.
-    * **Resultado Esperado:** Mensagem de sucesso no saque e o saldo da conta deve ser atualizado corretamente.
+        1.  Instancia uma `ContaCorrente`.
+        2.  Tenta realizar um depósito com valor negativo.
+    * **Resultados Esperados:** O saldo da conta não deve ser alterado e uma mensagem de valor inválido para depósito deve ser exibida.
 
-5.  **Cenário:** Tentativa de Saque em Conta Corrente (saldo insuficiente)
+* **CTF05: Criar Múltiplas Contas para a Mesma Pessoa Física (Corrente e Poupança)**
+    * **Cenário:** Valida a capacidade do sistema de criar múltiplos tipos de conta (corrente e poupança) para uma mesma Pessoa Física em uma única sessão.
     * **Passos:**
-        1.  Criar uma Conta Corrente (se ainda não existir) com um saldo baixo.
-        2.  Acessar o menu de operações bancárias.
-        3.  Selecionar a opção de saque.
-        4.  Informar o número da conta e um valor para saque maior que o saldo disponível.
-    * **Resultado Esperado:** Mensagem de erro informando saldo insuficiente e o saldo da conta deve permanecer inalterado.
+        1.  Simula a entrada de dados para cadastro de Pessoa Física.
+        2.  Simula a criação de Conta Corrente e, em seguida, Conta Poupança, ambos para a mesma pessoa.
+        3.  Executa o método principal da aplicação (`Aula.main`).
+    * **Resultados Esperados:** Confirmação da criação de ambas as contas com seus respectivos saldos e rendimentos, sem mensagens de erro de agência ou opção inválida.
 
-6.  **Cenário:** Listagem de Contas e Clientes
+* **CTF06: Tentar Escolher Agência Inexistente e Corrigir**
+    * **Cenário:** Testa a resiliência do sistema à entrada de agências inválidas e a capacidade de se recuperar após a correção do usuário.
     * **Passos:**
-        1.  Cadastrar pelo menos um cliente (PF ou PJ) e criar pelo menos uma conta.
-        2.  Acessar o menu de listagem de clientes.
-        3.  Acessar o menu de listagem de contas.
-    * **Resultado Esperado:** Todos os clientes e contas cadastrados devem ser exibidos corretamente no console.
+        1.  Simula a entrada de uma agência inválida.
+        2.  Simula a correção com a entrada de uma agência válida.
+        3.  Prossegue com o fluxo de criação de conta (sem criar contas para focar na validação da agência).
+        4.  Executa o método principal da aplicação (`Aula.main`).
+    * **Resultados Esperados:** Uma mensagem de erro para agência inválida deve ser exibida, o prompt da agência deve aparecer novamente, e o fluxo deve prosseguir corretamente após a entrada válida.
 
-### 🧷 Testes Unitários (JUnit) e Cobertura de Código (JaCoCo)
+**2. Cobertura de Código com JaCoCo**
 
--   Classe de teste principal: `CadastroTest.java`, com **6 casos de teste** funcionais simulados.
-    *(Nota: Embora `AppTest.java` possa existir, `CadastroTest.java` é o foco dos testes funcionais).*
--   Framework utilizado: **JUnit 5**
--   Ferramenta de cobertura: **JaCoCo**
--   Relatório gerado via Maven em `target/site/jacoco/index.html`
+A ferramenta **JaCoCo** é integrada ao processo de build do Maven para medir a eficácia dos testes implementados. Ele gera um relatório detalhado em HTML que mostra a porcentagem do código que foi exercitada pelos testes (cobertura de linha, instrução e ramificação).
+
+-   **Relatório gerado via Maven em `target/site/jacoco/index.html`**.
 
 ### 🛠️ Otimizações e Refatorações
 
@@ -138,4 +136,4 @@ Em resumo, o Maven atua como a espinha dorsal do projeto, orquestrando as etapas
 ### 1. Clone o Repositório
 
 ```bash
-git clone https://github.com/sergiopavanelli/trabalhoA3.git
+git clone https://github.com/sergiopavanelli/trabalhoA3
