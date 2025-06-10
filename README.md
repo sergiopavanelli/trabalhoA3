@@ -122,4 +122,4 @@ Este projeto é configurado com Maven. Certifique-se de ter o Maven instalado em
 ### 1. Clone o Repositório
 
 ```bash
-git clone [https://github.com/sergiopavanelli/trabalhoA3.git](https://github.com/sergiopavanelli/trabalhoA3.git)
+git clone https://github.com/sergiopavanelli/trabalhoA3.git
