@@ -150,14 +150,4 @@ git clone https://github.com/sergiopavanelli/trabalhoA3
 
 
 
-    ```markdown
-    ![Relatório de Cobertura JaCoCo](demo-banco.png)
-    ```
-
-    * `![Relatório de Cobertura JaCoCo]` is the alt text for the image, which is displayed if the image cannot be loaded and is also important for accessibility.
-    * `(demo-banco.png)` is the relative path to your image file. If your image is in a subdirectory (e.g., `images`), you would use `(images/demo-banco.png)`.
-
-This updated `README.md` provides a more comprehensive and clear explanation of your testing efforts, including the specific coverage percentages achieved by JaCoCo, making your project's documentation more robust.
-
-
 
