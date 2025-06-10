@@ -138,4 +138,4 @@ Em resumo, o Maven atua como a espinha dorsal do projeto, orquestrando as etapas
 ### 1. Clone o Repositório
 
 ```bash
-git clone [https://github.com/sergiopavanelli/trabalhoA3.git](https://github.com/sergiopavanelli/trabalhoA3.git)
+git clone https://github.com/sergiopavanelli/trabalhoA3.git
