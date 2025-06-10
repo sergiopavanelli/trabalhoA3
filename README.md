@@ -111,6 +111,11 @@ Esses números indicam que a maioria das instruções e ramificações do códig
 **Relatório de Cobertura JaCoCo:**
 ![Relatório de Cobertura JaCoCo](demo-banco.png)
 
+
+![Relatório de Cobertura JaCoCo](demo-banco_2.png)
+
+
+
 -   **Relatório gerado via Maven em `target/site/jacoco/index.html`**.
 
 ### 🛠️ Otimizações e Refatorações
