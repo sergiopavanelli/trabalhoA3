@@ -101,6 +101,16 @@ A classe `CadastroTest.java` contém uma suíte de **6 casos de teste funcionais
 
 A ferramenta **JaCoCo** é integrada ao processo de build do Maven para medir a eficácia dos testes implementados. Ele gera um relatório detalhado em HTML que mostra a porcentagem do código que foi exercitada pelos testes (cobertura de linha, instrução e ramificação).
 
+Conforme o relatório de cobertura, a suíte de testes alcançou os seguintes resultados:
+
+* **Cobertura de Instruções:** **72% (169 de 618)**
+* **Cobertura de Branches:** **55% (15 de 34)**
+
+Esses números indicam que a maioria das instruções e ramificações do código estão sendo exercitadas pelos testes, demonstrando uma boa cobertura, mas com espaço para melhorias, especialmente na cobertura de branches, que pode indicar cenários não completamente explorados.
+
+**Relatório de Cobertura JaCoCo:**
+![Relatório de Cobertura JaCoCo](demo-banco.png)
+
 -   **Relatório gerado via Maven em `target/site/jacoco/index.html`**.
 
 ### 🛠️ Otimizações e Refatorações
@@ -139,4 +149,15 @@ Em resumo, o Maven atua como a espinha dorsal do projeto, orquestrando as etapas
 git clone https://github.com/sergiopavanelli/trabalhoA3
 
 
-![alt text](image.png)
+
+    ```markdown
+    ![Relatório de Cobertura JaCoCo](demo-banco.png)
+    ```
+
+    * `![Relatório de Cobertura JaCoCo]` is the alt text for the image, which is displayed if the image cannot be loaded and is also important for accessibility.
+    * `(demo-banco.png)` is the relative path to your image file. If your image is in a subdirectory (e.g., `images`), you would use `(images/demo-banco.png)`.
+
+This updated `README.md` provides a more comprehensive and clear explanation of your testing efforts, including the specific coverage percentages achieved by JaCoCo, making your project's documentation more robust.
+
+
+
