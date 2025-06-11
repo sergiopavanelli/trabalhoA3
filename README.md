@@ -158,8 +158,42 @@ A escolha do **Maven** como ferramenta de automação de build e gerenciamento d
 
 Em resumo, o Maven atua como a espinha dorsal do projeto, orquestrando as etapas de desenvolvimento de forma organizada, eficiente e padronizada.
 
-### © 2025 Direitos Reservados para fins educacionais.
+### 1. Instalação do Maven
 
+```bash
+sudo apt-get install maven
+```     
+
+### 2. Compilação e Execução dos Testes
+
+```bash
+mvn clean install
+``` 
+
+### 3. Execução dos Testes
+
+```bash
+mvn test
+```
+
+### 4. Relatório de Cobertura JaCoCo
+
+```bash
+mvn jacoco:report
+```
+
+### 5. Abertura do Relatório de Cobertura JaCoCo
+
+```bash 
+open target/site/jacoco/index.html
+```     
+
+### 6. Execução do Projeto  
+
+
+```bash
+mvn exec:java   
+``` 
 
 ### 1. Clone o Repositório
 
