@@ -158,10 +158,13 @@ A escolha do **Maven** como ferramenta de automação de build e gerenciamento d
 
 Em resumo, o Maven atua como a espinha dorsal do projeto, orquestrando as etapas de desenvolvimento de forma organizada, eficiente e padronizada.
 
+### © 2025 Direitos Reservados para fins educacionais.
+
+
 ### 1. Clone o Repositório
 
 ```bash
 git clone https://github.com/sergiopavanelli/trabalhoA3
+```
 
-
-© 2025 Direitos Reservados para fins educacionais.
+### © 2025 Direitos Reservados para fins educacionais.
