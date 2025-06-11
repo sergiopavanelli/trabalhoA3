@@ -8,6 +8,17 @@ Este repositório contém a implementação de um sistema simples de **gestão d
 - Análise de cobertura de código com JaCoCo
 - Refatoração de código
 
+
+
+### Integrantes:
+
+
+Matheus Lopes Ferreira Leite - RA 1232022908
+Klaus Boger - RA 1232020299
+Andre Luiz da Silva Junior - RA 1232020446
+Sérgio Pinton Pavanelli - RA 123220202
+Humberto Belluco Dias Nogueira Machado - RA 1242021491
+
 ---
 
 ## 📌 Descrição do Programa
