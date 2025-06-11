@@ -162,3 +162,6 @@ Em resumo, o Maven atua como a espinha dorsal do projeto, orquestrando as etapas
 
 ```bash
 git clone https://github.com/sergiopavanelli/trabalhoA3
+
+
+© 2025 Direitos Reservados para fins educacionais.
