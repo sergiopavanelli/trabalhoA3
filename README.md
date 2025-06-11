@@ -9,7 +9,7 @@ Este repositório contém a implementação de um sistema simples de **gestão d
 - Refatoração de código
 
 
-### Integrantes:
+### - Integrantes:
 
 
 Matheus Lopes Ferreira Leite - RA 1232022908
