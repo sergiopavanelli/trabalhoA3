@@ -195,7 +195,7 @@ open target/site/jacoco/index.html
 mvn exec:java   
 ``` 
 
-### 1. Clone o Repositório
+### Para clonar o Repositório:
 
 ```bash
 git clone https://github.com/sergiopavanelli/trabalhoA3
