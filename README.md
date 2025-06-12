@@ -114,13 +114,20 @@ A ferramenta **JaCoCo** foi integrada ao processo de build do Maven para medir a
 
 Esses resultados indicam que a maioria das instruções e ramificações do código estão sendo exercitadas pelos testes, demonstrando uma boa cobertura geral. A cobertura de branches aponta áreas onde cenários adicionais podem ser explorados para aumentar a robustez dos testes.
 
+
 **Relatório de Cobertura JaCoCo:**
 
 ![Relatório de Cobertura JaCoCo](images/demo-banco.png)
 
 ![Relatório de Cobertura JaCoCo](images/demo-banco_2.png)
 
+![Relatório de Cobertura JaCoCo](images/mvn jacoco_report.png)
+
 -   O relatório detalhado pode ser gerado via Maven em `target/site/jacoco/index.html`.
+
+-   O relatório de cobertura JaCoCo pode ser obtido por meio do comando maven `mvn jacoco:report`. 
+
+
 
 ### 🛠️ Otimizações e Refatorações (Exercício 01, item f)
 
