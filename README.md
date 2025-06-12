@@ -121,7 +121,7 @@ Esses resultados indicam que a maioria das instruções e ramificações do cód
 
 ![Relatório de Cobertura JaCoCo](images/demo-banco_2.png)
 
-![Relatório de Cobertura JaCoCo](images/mvn jacoco_report.png)
+![Relatório de Cobertura JaCoCo](images/mvnjacoco_report.png)
 
 -   O relatório detalhado pode ser gerado via Maven em `target/site/jacoco/index.html`.
 
